@@ -50,11 +50,13 @@ module.exports = function () {
 
     opts = opts || {}
 
+    var isEnabled = opts.isEnabled === undefined ? false : Boolean(opts.isEnabled)
     var markdown = opts.markdown === undefined ? true : Boolean(opts.markdown)
     var prefixColor = opts.prefixColor || Logdown._getNextPrefixColor()
     var logger = opts.logger || console
 
     return {
+      isEnabled: isEnabled,
       logger: logger,
       markdown: markdown,
       prefix: prefix,
@@ -69,7 +71,7 @@ module.exports = function () {
   }
 
   Logdown._getEnableState = function (opts) {
-    var isEnabled = false
+    var isEnabled = opts.isEnabled
 
     Logdown._prefixRegExps.forEach(function (filter) {
       if (

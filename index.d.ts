@@ -5,6 +5,7 @@ declare namespace logdown {
   type TransportFunction = (options: TransportOptions) => void;
 
   interface LogdownOptions {
+    isEnabled?: boolean;
     logger?: any;
     markdown?: boolean;
     prefix?: string;
